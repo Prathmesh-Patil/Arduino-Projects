@@ -1,0 +1,33 @@
+#include<Servo.h>
+Servo motor;
+int IR = 5;
+int LDR = 6;
+void setup() {
+  // put your setup code here, to run once:
+  motor.attach(9);
+  pinMode(IR, INPUT);
+  pinMode(LDR, INPUT);
+}
+ 
+void loop() {
+  // put your main code here, to run repeatedly:
+  int sensor1 = digitalRead(IR);
+  int sensor2 = digitalRead(LDR);
+  if(sensor1 == 1 && sensor2 == 1)
+  {
+    motor.write(90);
+  }  
+  else if(sensor1 == 0 && sensor2 == 0)
+  {
+    motor.write(90);
+  }
+  else if(sensor1 == 1 && sensor2 == 0)
+  {
+    motor.write(0);
+  }
+  else if(sensor1 == 0 && sensor2 == 1)
+  {
+    motor.write(180);
+  }
+}
+ 
